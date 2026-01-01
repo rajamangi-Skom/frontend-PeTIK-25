@@ -29,6 +29,9 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const all = async () => {
   await delay(300);
   // isi di sini
+  for (const dataUser of users) {
+    console.log(dataUser);
+  }
 };
 
 /**
@@ -43,6 +46,8 @@ const all = async () => {
 const store = async (user) => {
   await delay(300);
   // isi di sini
+  users.push(user);
+  await all();
 };
 
 /**
@@ -57,6 +62,8 @@ const store = async (user) => {
 const update = async (index, user) => {
   await delay(300);
   // isi di sini
+  users.splice(index, 1, user);
+  await all();
 };
 
 /**
@@ -71,6 +78,8 @@ const update = async (index, user) => {
 const destroy = async (index) => {
   await delay(300);
   // isi di sini
+  users.splice(index, 1);
+  await all()
 };
 
 /**
