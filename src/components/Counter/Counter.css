@@ -1,0 +1,32 @@
+.count {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: normal;
+}
+
+.tambah {
+  padding: 10px;
+  background-color: green;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+}
+
+.kurang {
+  padding: 10px;
+  background-color: red;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+}
