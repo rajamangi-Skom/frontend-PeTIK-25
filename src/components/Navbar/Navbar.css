@@ -1,0 +1,14 @@
+ul li a {
+  text-decoration: none;
+}
+
+ul li {
+  color: red;
+  list-style: square;
+}
+
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+  color: red;
+}

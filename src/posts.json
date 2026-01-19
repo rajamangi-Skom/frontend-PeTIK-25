@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Tutorial belajar reactjs lengkap",
+    "tags": ["reactjs", "frontend"],
+    "author": "Ucup",
+    "date": "2025-12-23",
+    "isNew": true
+  },
+  {
+    "title": "Meningkatkan performa reactjs",
+    "tags": ["reactjs", "frontend"],
+    "author": "Budi",
+    "date": "2025-04-19",
+    "isNew": false
+  },
+  {
+    "title": "Cara menggunakan chakra UI di React JS",
+    "tags": ["reactjs", "frontend"],
+    "author": "Bambang",
+    "date": "2026-01-04",
+    "isNew": true
+  },
+  {
+    "title": "Marquez ngaku bukan rekan setim yang baik, peringatan buat Joan Mir",
+    "tags": ["sport", "otomotif"],
+    "author": "Okditya Karina Sari",
+    "date": "2023-02-08",
+    "isNew": false
+  },
+  {
+    "title": "AI perlu ditunjang data center mumpuni, Telkom andalkan big box",
+    "tags": ["Teknologi"],
+    "author": "Agus Tri Haryanto",
+    "date": "2025-02-20",
+    "isNew": false
+  }
+]
