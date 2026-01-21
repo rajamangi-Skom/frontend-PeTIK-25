@@ -1,0 +1,64 @@
+.about_page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.about_hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about_hero h1 {
+  font-size: 32px;
+  color: #2ea44f;
+  margin-bottom: 12px;
+}
+
+.about_hero p {
+  color: #555;
+  line-height: 1.6;
+}
+
+.about_values h2,
+.about_footer h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.values_list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.value_card {
+  flex: 1;
+  min-width: 240px;
+  background: #fff;
+  border: 1px solid #e3e3e3;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.value_card h3 {
+  color: #2ea44f;
+  margin-bottom: 8px;
+}
+
+.value_card p {
+  color: #666;
+  line-height: 1.5;
+}
+
+.about_footer {
+  margin-top: 40px;
+}
+
+.about_footer p {
+  color: #555;
+  text-align: center;
+  line-height: 1.6;
+}

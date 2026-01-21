@@ -1,0 +1,38 @@
+.obat_page {
+  padding: 20px;
+}
+
+.obat_search {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.obat_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.obat_card {
+  width: 180px;
+  padding: 14px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.05);
+}
+
+.obat_nama {
+  font-weight: 600;
+}
+
+.obat_harga {
+  color: #219653;
+  font-weight: 500;
+}
