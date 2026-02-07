@@ -33,7 +33,7 @@ const Body = () => {
           {dataObat.slice(0, 3).map((item) => (
             <div key={item.id} className="promo_card">
               <h3>{item.nama}</h3>
-              <span>Rp{item.harga}</span>
+              <span>{item.harga}</span>
               <button className="btn-primary">Beli</button>
             </div>
           ))}

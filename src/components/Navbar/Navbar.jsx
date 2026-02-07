@@ -42,6 +42,16 @@ const Navbar = () => {
                 Tentang Kami
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/berita"
+                className={({ isActive }) =>
+                  isActive ? "navlink active" : "navlink"
+                }
+              >
+                Rumah Sakit
+              </NavLink>
+            </li>
           </ul>
         </nav>
 

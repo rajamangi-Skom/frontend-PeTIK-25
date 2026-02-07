@@ -25,7 +25,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.05);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
 }
 
 .obat_nama {
@@ -35,4 +35,55 @@
 .obat_harga {
   color: #219653;
   font-weight: 500;
+}
+
+.obat_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.btn_tambah {
+  background-color: #219653;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn_tambah:hover {
+  background-color: #2563eb;
+}
+
+.obat_card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.obat_img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f1f5f9;
+}
+
+.obat_info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.obat_kategori {
+  font-size: 12px;
+  background: #e0f2fe;
+  color: #219653;
+  padding: 2px 7px;
+  border-radius: 999px;
+  width: fit-content;
 }
