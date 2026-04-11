@@ -1,29 +1,27 @@
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate, useOutletContext } from "react-router-dom";
 import axios from "axios";
-// import Card from "../../Components/Card/Card";
 
 const Kategori = () => {
   // kalo nilainya berupa array/objek maka disesuaikan
-  const [categories, setCategories] = useState([]);
+  const [pelanggan, setPelanggan] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const { search } = useOutletContext();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    getProductsCategories();
+    getPelanggan();
   }, []);
 
-  const getProductsCategories = async () => {
+  const getPelanggan = async () => {
     setLoading(true);
     try {
       const result = await axios.get(
-        `${import.meta.env.VITE_API_URL}/jenis-produk`,
+        `${import.meta.env.VITE_API_URL}/pelanggan`,
       );
-      console.log(categories);
-      setCategories(result.data.data);
-      setCurrentPage(1)
+      console.log(pelanggan);
+      setPelanggan(result.data.data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -31,8 +29,8 @@ const Kategori = () => {
     }
   };
 
-  const filteredData = categories.filter((category) => {
-    return category.nama?.toLowerCase().includes(search.toLowerCase());
+  const filteredData = pelanggan.filter((client) => {
+    return client.nama?.toLowerCase().includes(search.toLowerCase());
   });
 
   const ITEMS_PER_PAGE = 10;
@@ -51,33 +49,29 @@ const Kategori = () => {
   // slice(mulai,selesai)
 
   const handleDelete = async (uuid) => {
-    const msg = window.confirm("Yakin nak hapus ni?");
-
+    const msg = window.confirm("Yakin ingin menghapus");
     if (!msg) return;
+    console.log(uuid);
+
     try {
-      await axios.delete(
-        `${import.meta.env.VITE_API_URL}/jenis-produk/${uuid}`,
-      );
-      getProductsCategories();
+      await axios.delete(`${import.meta.env.VITE_API_URL}/pelanggan/${uuid}`);
+      setCurrentPage(1)
+      getPelanggan();
     } catch (error) {
       console.log(error);
     }
   };
+
   const handleEdit = (uuid) => {
-    navigate(`/dashboard/kategori/edit/${uuid}`);
+    navigate(`/dashboard/pelanggan/edit/${uuid}`);
   };
 
   return (
     <div>
       <div className="kategori-header">
-        <h3>Daftar Kategori</h3>
-        <NavLink to="/dashboard/kategori/add">Tambah Kategori</NavLink>
+        <h3>Daftar Pelanggan</h3>
+        <NavLink to="/dashboard/pelanggan/add">Tambah Pelanggan</NavLink>
       </div>
-
-      {/* <Card>
-        <h3>Ini Judul Card</h3>
-        <p>Ini konten Card</p>
-      </Card> */}
 
       <div className="table-wrapper">
         <table>
@@ -85,7 +79,11 @@ const Kategori = () => {
             <tr>
               <th>No</th>
               <th>Nama</th>
-              <th>Gambar</th>
+              <th>Gender</th>
+              <th>No_hp</th>
+              <th>Alamat</th>
+              <th>TTL</th>
+              <th>Kartu</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -98,18 +96,21 @@ const Kategori = () => {
                     ))}
                   </tr>
                 ))
-              : paginatedData.map((category, index) => (
+              : paginatedData.map((client, index) => (
                   <tr key={index}>
                     <td>{(currentPage - 1) * ITEMS_PER_PAGE + index + 1}</td>
-                    <td>{category.nama}</td>
+                    <td>{client.nama}</td>
+                    <td>{client.gender}</td>
+                    <td>{client.no_hp}</td>
+                    <td>{client.alamat}</td>
+                    <td>{client.tgl_lahir}</td>
+                    <td>{client.kartu?.nama || "-"}</td>
+
                     <td>
-                      <img src={category.url} alt="gambar" width={120} />
-                    </td>
-                    <td>
-                      <button onClick={() => handleEdit(category.uuid)}>
+                      <button onClick={() => handleEdit(client.uuid)}>
                         Edit
                       </button>
-                      <button onClick={() => handleDelete(category.uuid)}>
+                      <button onClick={() => handleDelete(client.uuid)}>
                         Delete
                       </button>
                     </td>
