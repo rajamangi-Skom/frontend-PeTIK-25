@@ -1,0 +1,4 @@
+.sidebar a.menu.active {
+  background-color: red;
+  color: #fff;
+}
