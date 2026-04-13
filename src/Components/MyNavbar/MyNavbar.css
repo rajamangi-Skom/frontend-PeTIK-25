@@ -79,3 +79,18 @@
   color: #888;
   pointer-events: none;
 }
+
+.btn-logout {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn-logout:hover {
+  background: #b91c1c;
+}

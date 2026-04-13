@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
+import axiosInstance from "../utils/axiosInstance";
 import { NavLink, useNavigate, useOutletContext } from "react-router-dom";
 
 const Produk = () => {
@@ -21,7 +21,7 @@ const Produk = () => {
 
   const getProduct = async () => {
     try {
-      const result = await axios.get(`
+      const result = await axiosInstance.get(`
         https://apiniaga.psjpetik.my.id/api/v1/produk`);
       //   console.log(result.data.data);
       console.log(produk);
@@ -34,7 +34,7 @@ const Produk = () => {
   const getProductCategories = async () => {
     setLoading(true);
     try {
-      const result = await axios.get(`
+      const result = await axiosInstance.get(`
         ${import.meta.env.VITE_API_URL}/jenis-produk`);
       //   console.log(result.data.data);
       setCategories(result.data.data);
@@ -70,7 +70,9 @@ const Produk = () => {
 
     if (!msg) return;
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/produk/${uuid}`);
+      await axiosInstance.delete(
+        `${import.meta.env.VITE_API_URL}/produk/${uuid}`,
+      );
       setCurrentPage(1);
       getProduct();
     } catch (error) {
@@ -114,7 +116,13 @@ const Produk = () => {
                 </td>
                 <td>
                   <button onClick={() => handleEdit(produk.uuid)}>Edit</button>
-                  <button onClick={() => handleDelete(produk.uuid)}>
+                  <button
+                    style={{
+                      backgroundColor: "rgb(165, 11, 0)",
+                      color: "white",
+                    }}
+                    onClick={() => handleDelete(produk.uuid)}
+                  >
                     Delete
                   </button>
                 </td>

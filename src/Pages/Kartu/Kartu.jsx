@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate, useOutletContext } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 const Kartu = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [cards, setCards] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,7 +15,9 @@ const Kartu = () => {
 
   const getCards = async () => {
     try {
-      const result = await axios.get(`${import.meta.env.VITE_API_URL}/kartu`);
+      const result = await axiosInstance.get(
+        `${import.meta.env.VITE_API_URL}/kartu`,
+      );
       console.log(cards);
       setCards(result.data.data);
     } catch (error) {
@@ -49,7 +50,9 @@ const Kartu = () => {
     console.log(uuid);
 
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/kartu/${uuid}`);
+      await axiosInstance.delete(
+        `${import.meta.env.VITE_API_URL}/kartu/${uuid}`,
+      );
       setCurrentPage(1);
       getCards();
     } catch (error) {
@@ -93,7 +96,13 @@ const Kartu = () => {
                 <td>
                   <button onClick={() => handleEdit(card.uuid)}>Edit</button>
 
-                  <button onClick={() => handleDelete(card.uuid)}>
+                  <button
+                    style={{
+                      backgroundColor: "rgb(165, 11, 0)",
+                      color: "white",
+                    }}
+                    onClick={() => handleDelete(card.uuid)}
+                  >
                     Delete
                   </button>
                 </td>

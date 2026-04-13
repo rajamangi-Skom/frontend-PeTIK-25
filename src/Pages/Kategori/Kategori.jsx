@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate, useOutletContext } from "react-router-dom";
-import axios from "axios";
-// import Card from "../../Components/Card/Card";
+import axiosInstance from "../utils/axiosInstance";
 
 const Kategori = () => {
   // kalo nilainya berupa array/objek maka disesuaikan
@@ -18,12 +17,12 @@ const Kategori = () => {
   const getProductsCategories = async () => {
     setLoading(true);
     try {
-      const result = await axios.get(
+      const result = await axiosInstance.get(
         `${import.meta.env.VITE_API_URL}/jenis-produk`,
       );
       console.log(categories);
       setCategories(result.data.data);
-      setCurrentPage(1)
+      setCurrentPage(1);
     } catch (error) {
       console.log(error);
     } finally {
@@ -55,7 +54,7 @@ const Kategori = () => {
 
     if (!msg) return;
     try {
-      await axios.delete(
+      await axiosInstance.delete(
         `${import.meta.env.VITE_API_URL}/jenis-produk/${uuid}`,
       );
       getProductsCategories();
@@ -73,11 +72,6 @@ const Kategori = () => {
         <h3>Daftar Kategori</h3>
         <NavLink to="/dashboard/kategori/add">Tambah Kategori</NavLink>
       </div>
-
-      {/* <Card>
-        <h3>Ini Judul Card</h3>
-        <p>Ini konten Card</p>
-      </Card> */}
 
       <div className="table-wrapper">
         <table>
@@ -109,7 +103,13 @@ const Kategori = () => {
                       <button onClick={() => handleEdit(category.uuid)}>
                         Edit
                       </button>
-                      <button onClick={() => handleDelete(category.uuid)}>
+                      <button
+                        style={{
+                          backgroundColor: "rgb(165, 11, 0)",
+                          color: "white",
+                        }}
+                        onClick={() => handleDelete(category.uuid)}
+                      >
                         Delete
                       </button>
                     </td>

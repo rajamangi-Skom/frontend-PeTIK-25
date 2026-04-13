@@ -9,7 +9,7 @@ import {
 import { TfiStatsUp } from "react-icons/tfi";
 import { IoIosWarning } from "react-icons/io";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import {
   CartesianGrid,
   Legend,
@@ -45,9 +45,9 @@ const Dashboard = () => {
   const fetchAll = async () => {
     try {
       const [resPesanan, resProduk, resPelanggan] = await Promise.all([
-        axios.get(`${import.meta.env.VITE_API_URL}/pesanan`),
-        axios.get(`${import.meta.env.VITE_API_URL}/produk`),
-        axios.get(`${import.meta.env.VITE_API_URL}/pelanggan`),
+        axiosInstance.get(`${import.meta.env.VITE_API_URL}/pesanan`),
+        axiosInstance.get(`${import.meta.env.VITE_API_URL}/produk`),
+        axiosInstance.get(`${import.meta.env.VITE_API_URL}/pelanggan`),
       ]);
 
       setPesanan(resPesanan.data.data);
@@ -88,9 +88,12 @@ const Dashboard = () => {
 
       console.log(typeof newStok);
 
-      await axios.put(`${import.meta.env.VITE_API_URL}/produk/${produk.uuid}`, {
-        stok: Number(newStok),
-      });
+      awaitaxiosInstance.put(
+        `${import.meta.env.VITE_API_URL}/produk/${produk.uuid}`,
+        {
+          stok: Number(newStok),
+        },
+      );
       setEditStokId(null);
       setStokTambah(0);
       fetchAll();
@@ -262,7 +265,7 @@ const Dashboard = () => {
 
         <div>
           <h4>Stok Menipis</h4>
-          <table >
+          <table>
             <thead>
               <tr>
                 <th>Produk</th>

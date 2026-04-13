@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { NavLink, useOutletContext } from "react-router-dom";
-import axios from "axios";
-
+import axiosInstance from "../utils/axiosInstance";
+import { useOutletContext, NavLink } from "react-router-dom";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -14,7 +13,9 @@ const Users = () => {
 
   const getUsers = async () => {
     try {
-      const result = await axios.get(`${import.meta.env.VITE_API_URL}/users`);
+      const result = await axiosInstance.get(
+        `${import.meta.env.VITE_API_URL}/users`,
+      );
       console.log(users);
       setUsers(result.data.data);
     } catch (error) {
@@ -47,7 +48,9 @@ const Users = () => {
     console.log(uuid);
 
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/users/${uuid}`);
+      await axiosInstance.delete(
+        `${import.meta.env.VITE_API_URL}/users/${uuid}`,
+      );
       getUsers();
     } catch (error) {
       console.log(error);
@@ -82,14 +85,19 @@ const Users = () => {
                 </td>
                 <td>{users.email}</td>
                 <td>{users.username}</td>
-     
+
                 <td>{users.role}</td>
                 <td>{users.status}</td>
-            
 
                 <td>
                   <button>Edit</button>
-                  <button onClick={() => handleDelete(users.uuid)}>
+                  <button
+                    style={{
+                      backgroundColor: "rgb(165, 11, 0)",
+                      color: "white",
+                    }}
+                    onClick={() => handleDelete(users.uuid)}
+                  >
                     Delete
                   </button>
                 </td>

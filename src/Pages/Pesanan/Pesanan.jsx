@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate, useOutletContext } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 const Pesanan = () => {
   const navigate = useNavigate();
@@ -14,7 +14,9 @@ const Pesanan = () => {
 
   const getOrders = async () => {
     try {
-      const result = await axios.get(`${import.meta.env.VITE_API_URL}/pesanan`);
+      const result = await axiosInstance.get(
+        `${import.meta.env.VITE_API_URL}/pesanan`,
+      );
       console.log(orders);
       setOrders(result.data.data);
     } catch (error) {
@@ -47,7 +49,9 @@ const Pesanan = () => {
     console.log(uuid);
 
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/pesanan/${uuid}`);
+      await axiosInstance.delete(
+        `${import.meta.env.VITE_API_URL}/pesanan/${uuid}`,
+      );
       setCurrentPage(1);
       getOrders();
     } catch (error) {
@@ -86,7 +90,13 @@ const Pesanan = () => {
 
                 <td>
                   <button onClick={() => handleEdit(orders.uuid)}>Edit</button>
-                  <button onClick={() => handleDelete(orders.uuid)}>
+                  <button
+                    style={{
+                      backgroundColor: "rgb(165, 11, 0)",
+                      color: "white",
+                    }}
+                    onClick={() => handleDelete(orders.uuid)}
+                  >
                     Delete
                   </button>
                 </td>

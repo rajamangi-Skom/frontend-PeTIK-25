@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate, useOutletContext } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 const Kategori = () => {
   // kalo nilainya berupa array/objek maka disesuaikan
@@ -17,7 +17,7 @@ const Kategori = () => {
   const getPelanggan = async () => {
     setLoading(true);
     try {
-      const result = await axios.get(
+      const result = await axiosInstance.get(
         `${import.meta.env.VITE_API_URL}/pelanggan`,
       );
       console.log(pelanggan);
@@ -54,8 +54,10 @@ const Kategori = () => {
     console.log(uuid);
 
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/pelanggan/${uuid}`);
-      setCurrentPage(1)
+      await axiosInstance.delete(
+        `${import.meta.env.VITE_API_URL}/pelanggan/${uuid}`,
+      );
+      setCurrentPage(1);
       getPelanggan();
     } catch (error) {
       console.log(error);
@@ -110,7 +112,13 @@ const Kategori = () => {
                       <button onClick={() => handleEdit(client.uuid)}>
                         Edit
                       </button>
-                      <button onClick={() => handleDelete(client.uuid)}>
+                      <button
+                        style={{
+                          backgroundColor: "rgb(165, 11, 0)",
+                          color: "white",
+                        }}
+                        onClick={() => handleDelete(client.uuid)}
+                      >
                         Delete
                       </button>
                     </td>

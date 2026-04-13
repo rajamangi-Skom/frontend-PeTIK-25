@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, useOutletContext } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 const History = () => {
   const [history, setHistory] = useState([]);
@@ -13,7 +13,9 @@ const History = () => {
 
   const getHistory = async () => {
     try {
-      const result = await axios.get(`${import.meta.env.VITE_API_URL}/history`);
+      const result = await axiosInstance.get(
+        `${import.meta.env.VITE_API_URL}/history`,
+      );
       console.log(history);
       setHistory(result.data.data);
     } catch (error) {
@@ -46,7 +48,9 @@ const History = () => {
     console.log(uuid);
 
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/history/${uuid}`);
+      await axiosInstance.delete(
+        `${import.meta.env.VITE_API_URL}/history/${uuid}`,
+      );
       getHistory();
     } catch (error) {
       console.log(error);
@@ -84,7 +88,13 @@ const History = () => {
                 </td>
                 <td>
                   <button>Edit</button>
-                  <button onClick={() => handleDelete(history.uuid)}>
+                  <button
+                    style={{
+                      backgroundColor: "rgb(165, 11, 0)",
+                      color: "white",
+                    }}
+                    onClick={() => handleDelete(history.uuid)}
+                  >
                     Delete
                   </button>
                 </td>

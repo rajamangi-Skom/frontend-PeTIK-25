@@ -1,0 +1,158 @@
+body {
+  background: #f5f7fb;
+  font-family: "Poppins", sans-serif;
+}
+
+.banner-utama {
+  margin: 20px;
+  padding: 70px 20px;
+  border-radius: 24px;
+  background: linear-gradient(120deg, #2563eb, #60a5fa);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-utama::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.15);
+  filter: blur(100px);
+  top: -50px;
+  right: -50px;
+}
+
+.banner-utama h1 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.banner-utama p {
+  font-size: 16px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.btn-lihat {
+  background: white;
+  color: #2563eb;
+  padding: 12px 26px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-lihat:hover {
+  background: #e0e7ff;
+  transform: scale(1.05);
+}
+
+.kategori-container {
+  margin: 20px;
+}
+
+.kategori-container h3 {
+  margin-bottom: 12px;
+}
+
+.kategori {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-kategori {
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: none;
+  background: #e5e7eb;
+  color: #334155;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-kategori:hover {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.btn-kategori.active {
+  background: #3b82f6;
+  color: white;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+.produk-container {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card-produk {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+
+.card-produk:hover {
+  transform: translateY(-6px);
+}
+
+.card-produk img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 14px;
+}
+
+.kategori-text {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.card-body h4 {
+  margin: 6px 0;
+}
+
+.card-body p {
+  font-size: 13px;
+}
+
+.card-body h3 {
+  color: #2563eb;
+  margin: 8px 0;
+}
+
+.btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-outline {
+  flex: 1;
+  border: 1px solid #3b82f6;
+  background-color: #ffff;
+  color: black;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.btn-primary {
+  flex: 1;
+  border: 1px solid #3b82f6;
+  background: white;
+  color: #3b82f6;
+  border-radius: 8px;
+  padding: 6px;
+}

@@ -73,10 +73,6 @@ button:first-child {
   color: white;
 }
 
-button:last-child {
-  background: #ef4444;
-  color: white;
-}
 
 .pagination {
   margin-top: 16px;

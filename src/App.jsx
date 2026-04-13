@@ -23,12 +23,15 @@ import EditProduk from "./Pages/Produk/EditProduk.jsx";
 import EditKartu from "./Pages/Kartu/EditKartu.jsx";
 import EditPelanggan from "./Pages/Pelanggan/EditPelanggan.jsx";
 import EditPesanan from "./Pages/Pesanan/EditPesanan.jsx";
+import LandingPage from "./Components/LandingPage/LandingPage.jsx";
+import Login from "./Pages/Login/Login.jsx";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<h1>Hello world</h1>} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
 
         <Route path="dashboard" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
